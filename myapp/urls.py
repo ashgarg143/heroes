@@ -2,9 +2,14 @@ from django.urls import path, include
 from rest_framework import routers
 from . import views
 
-router = routers.DefaultRouter()
-router.register(r'heroes', views.HeroViewSet)
+# router = routers.DefaultRouter()
+# router.register(r'heroes', views.HeroViewSet)
+
 
 urlpatterns = [
-    path('', include(router.urls))
+    # path('', include(router.urls))
+
+
+    path('', views.heroes_list,),
+    path('<hero_id>/', views.get_hero,)
 ]
