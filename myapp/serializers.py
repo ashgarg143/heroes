@@ -1,8 +1,17 @@
 from rest_framework import serializers
-from myapp.models import Hero
+
+from myapp.models import Movie, ActorMovie
 
 
-class HeroSerializer(serializers.HyperlinkedModelSerializer):
+class MovieSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
-        model = Hero
-        fields = ('id', 'name', 'alias')
+        model = Movie
+        fields = ['movie_id', 'name', 'year', 'genre', 'rating', 'favourite']
+
+
+class ActorMovieSerializer(serializers.HyperlinkedModelSerializer):
+    movie = MovieSerializer()
+
+    class Meta:
+        model = ActorMovie
+        fields = ['movie']

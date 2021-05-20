@@ -1,15 +1,16 @@
-from django.urls import path, include
-from rest_framework import routers
+from django.urls import path
+
 from . import views
 
-# router = routers.DefaultRouter()
-# router.register(r'heroes', views.HeroViewSet)
-
-
 urlpatterns = [
-    # path('', include(router.urls))
 
-
-    path('', views.heroes_list,),
-    path('<hero_id>/', views.get_hero,)
+    path('', views.movies_list, ),
+    path('top/', views.top_movies, ),
+    path('latest/', views.latest_movies, ),
+    path('movie/add/', views.add_movie, ),
+    path('movie/delete/', views.delete_movie, ),
+    path('year/<year>/', views.movie_by_year, ),
+    path('favourites/', views.get_favourite_movies, ),
+    path('favourites/add/', views.add_favourite_movie, ),
+    path('favourites/remove/', views.remove_favourite_movie, ),
 ]
